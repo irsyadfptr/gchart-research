@@ -4,19 +4,18 @@ import HighchartsReact from 'highcharts-react-official';
 import HighchartsDependencyWheel from 'highcharts/modules/dependency-wheel';
 import HighchartsSankey from 'highcharts/modules/sankey';
 
+const data = 
+[        
+    ['A', 'X', 5],
+    ['A', 'Y', 7],
+    ['B', 'X', 3],
+    ['B', 'Y', 2]
+]
 
-const CircularSankey = () => {
-    HighchartsSankey(Highcharts);
-    HighchartsDependencyWheel(Highcharts);
-  const options = {
+const options = {
     series: [{
       keys: ['from', 'to', 'weight'],
-      data: [
-        ['A', 'X', 5],
-        ['A', 'Y', 7],
-        ['B', 'X', 3],
-        ['B', 'Y', 2]
-      ],
+      data: data,
       type: 'dependencywheel',
       name: 'Circular Sankey Diagram',
       dataLabels: {
@@ -38,11 +37,14 @@ const CircularSankey = () => {
         width: 600,
         height: 500
     },
-  };
+};
 
-  return (
-    <HighchartsReact highcharts={Highcharts} options={options} />
-  );
+const CircularSankey = () => {
+    HighchartsSankey(Highcharts);
+    HighchartsDependencyWheel(Highcharts);
+    return (
+        <HighchartsReact highcharts={Highcharts} options={options} />
+    );
 };
 
 export default CircularSankey;
